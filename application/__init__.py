@@ -9,6 +9,8 @@ from forms import SearchForm
 #----------------------------------------------------------------------------#
 
 app = Flask('application')
+
+
 app.config.from_object('config.DevelopmentConfig')
 
 db = SQLAlchemy(app)
@@ -23,6 +25,5 @@ if not app.debug:
     app.logger.addHandler(file_handler)
     app.logger.info('errors')
 
+
 import views
-
-
