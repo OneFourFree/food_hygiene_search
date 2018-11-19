@@ -1,0 +1,174 @@
+body {
+  background-color: #f5f5f5; }
+
+.page-wrapper.results {
+  padding-bottom: 120px; }
+  .page-wrapper.results .sidebar .main-block .input-group input {
+    height: 42px;
+    border-width: 0; }
+  .page-wrapper.results .sidebar .search-btn {
+    border-color: transparent;
+    background: #fff;
+    height: 42px !important;
+    border-width: 0; }
+  .page-wrapper.results .sidebar .search-btn:hover {
+    background-color: #f30; }
+  .page-wrapper.results .sidebar .main-block .input-group-btn {
+    height: 42px; }
+  .page-wrapper.results .sidebar .main-block div.type-filter {
+    display: flex;
+    margin: 16px 0; }
+    .page-wrapper.results .sidebar .main-block div.type-filter .type-filter-text {
+      width: 100%;
+      margin: 0; }
+    .page-wrapper.results .sidebar .main-block div.type-filter .btnLink {
+      align-items: flex-start;
+      border: 0;
+      color: #266bad;
+      margin: 0;
+      padding: 0;
+      background: transparent; }
+    .page-wrapper.results .sidebar .main-block div.type-filter .btnLink:hover {
+      color: #14509c;
+      cursor: pointer;
+      text-decoration: underline; }
+  .page-wrapper.results .sidebar .main-block .widget-heading {
+    padding: 0;
+    margin: 16px 0;
+    border: none; }
+  .page-wrapper.results .sidebar .main-block .widget.clearfix {
+    background: none;
+    border: none; }
+  .page-wrapper.results .sidebar .main-block .widget-body {
+    padding: 0; }
+    .page-wrapper.results .sidebar .main-block .widget-body .rating {
+      margin: 0 auto;
+      float: none; }
+    .page-wrapper.results .sidebar .main-block .widget-body .rating:not(:checked) > label {
+      border-radius: 50%;
+      border: 2px solid #000;
+      width: 36px;
+      height: 36px;
+      padding: 1px;
+      background: #fff;
+      color: #000;
+      text-align: center;
+      font: 28px Arial, sans-serif;
+      font-weight: 600;
+      text-shadow: none;
+      display: inline-block;
+      margin: 0 2%; }
+    .page-wrapper.results .sidebar .main-block .widget-body .rating:not(:checked) > label:hover {
+      background: #c9d85b; }
+    .page-wrapper.results .sidebar .main-block .widget-body .rating > input:checked + label {
+      background: #c9d85b;
+      text-shadow: none; }
+  .page-wrapper.results .sidebar .main-block #ul-business-type li {
+    padding: 8px 12px;
+    background: #fff;
+    margin-bottom: 8px;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    display: flex;
+    vertical-align: middle; }
+    .page-wrapper.results .sidebar .main-block #ul-business-type li label {
+      margin: 0;
+      line-height: 22px;
+      top: 0.1rem;
+      width: 100%; }
+      .page-wrapper.results .sidebar .main-block #ul-business-type li label .custom-control-description {
+        line-height: 1;
+        font-size: 14px; }
+      .page-wrapper.results .sidebar .main-block #ul-business-type li label span.custom-control-indicator {
+        top: 0.1rem;
+        padding: 8.5px; }
+  .page-wrapper.results .sidebar .main-block #ul-business-type li:hover {
+    border: 1px solid #cacaca; }
+    .page-wrapper.results .sidebar .main-block #ul-business-type li:hover label .custom-control-indicator {
+      background-color: #f30;
+      transition: 0.2s ease-in-out; }
+  .page-wrapper.results section.restaurants-page .container div.listings {
+    border-radius: 4px;
+    transition: opacity 0.2s ease, transform 0.2s ease, -webkit-transform 0.2s ease; }
+    .page-wrapper.results section.restaurants-page .container div.listings .restaurant-entry {
+      background: #fff;
+      border-bottom: 1px solid #eaeaea;
+      display: block;
+      margin: 0;
+      position: relative;
+      border-radius: 0;
+      color: #535353;
+      padding: 16px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: row; }
+      .page-wrapper.results section.restaurants-page .container div.listings .restaurant-entry .entry-dscr {
+        padding-left: 10px;
+        flex-basis: 50%;
+        position: relative; }
+        .page-wrapper.results section.restaurants-page .container div.listings .restaurant-entry .entry-dscr .businessType {
+          font-weight: 600; }
+      .page-wrapper.results section.restaurants-page .container div.listings .restaurant-entry .right-content {
+        flex-basis: 25%;
+        margin-top: auto;
+        padding-left: 16px;
+        width: 100%;
+        border-left: 1px solid #eaeaea; }
+        .page-wrapper.results section.restaurants-page .container div.listings .restaurant-entry .right-content .right-review {
+          border-left: none;
+          display: flex;
+          margin-bottom: 4px;
+          min-height: 97px; }
+          .page-wrapper.results section.restaurants-page .container div.listings .restaurant-entry .right-content .right-review p {
+            margin-top: 0;
+            padding: 0; }
+      .page-wrapper.results section.restaurants-page .container div.listings .restaurant-entry .entry-dscr::after {
+        background: #eaeaea;
+        content: "";
+        display: block;
+        height: 100%;
+        position: absolute;
+        right: -1px;
+        top: 4px;
+        width: 1px; }
+      .page-wrapper.results section.restaurants-page .container div.listings .restaurant-entry .fhr {
+        border-left: 1px solid #eaeaea;
+        flex-basis: 25%; }
+        .page-wrapper.results section.restaurants-page .container div.listings .restaurant-entry .fhr .img-container {
+          margin-top: 15px;
+          margin-bottom: auto;
+          text-align: center;
+          margin-left: 8px; }
+          .page-wrapper.results section.restaurants-page .container div.listings .restaurant-entry .fhr .img-container img {
+            max-height: 80px; }
+    .page-wrapper.results section.restaurants-page .container div.listings .restaurant-entry:first-child {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px; }
+  .page-wrapper.results .pager {
+    padding-left: 0;
+    margin: 20px 0;
+    text-align: center;
+    list-style: none; }
+    .page-wrapper.results .pager .disabled a {
+      opacity: 0.65;
+      cursor: not-allowed;
+      background-color: none; }
+    .page-wrapper.results .pager li {
+      display: inline; }
+      .page-wrapper.results .pager li a {
+        display: inline-block;
+        padding: 5px 14px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 15px;
+        color: #337ab7;
+        text-decoration: none; }
+      .page-wrapper.results .pager li a:hover {
+        text-decoration: none;
+        background-color: #eee; }
+    .page-wrapper.results .pager .previous a {
+      float: left; }
+    .page-wrapper.results .pager .next a {
+      float: right; }
+
+/*# sourceMappingURL=sass.css.map */

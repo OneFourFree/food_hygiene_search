@@ -1,0 +1,26 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<section class="hero bg-image" data-image-src="static/img/food-background.jpg">
+    <div class="hero-inner">
+        <div class="container text-center hero-text font-white">
+            <h1>Find Clean Restaurants Near You...</h1>
+            <h5 class="font-white space-xs">Just enter your postcode and find local restaurants...</h5>
+            <div class="banner-form">
+                <form class="form-inline" method="POST" action="">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        {{ form.postcode.label(class="sr-only") }}
+                        {{ form.postcode(class="form-control form-control-lg") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.submit(class="btn theme-btn btn-lg") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--end:Hero inner -->
+</section>
+{% endblock %}

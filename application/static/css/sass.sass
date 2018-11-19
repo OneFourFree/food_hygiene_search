@@ -1,0 +1,220 @@
+body
+  background-color: #f5f5f5
+
+.page-wrapper.results
+  padding-bottom: 120px
+
+  .sidebar
+    .main-block .input-group input
+      height: 42px
+      border-width: 0
+
+    .search-btn
+      border-color: transparent
+      background: #fff
+      height: 42px !important
+      border-width: 0
+
+    .search-btn:hover
+      background-color: #f30
+
+    .main-block .input-group-btn
+      height: 42px
+
+    .main-block
+      div.type-filter
+        display: flex
+        margin: 16px 0
+
+        .type-filter-text
+          width: 100%
+          margin: 0
+
+        .btnLink
+          align-items: flex-start
+          border: 0
+          color: #266bad
+          margin: 0
+          padding: 0
+          background: transparent
+
+        .btnLink:hover
+          color: #14509c
+          cursor: pointer
+          text-decoration: underline
+
+      .widget-heading
+        padding: 0
+        margin: 16px 0
+        border: none
+
+      .widget.clearfix
+        background: none
+        border: none
+
+      .widget-body
+        padding: 0
+
+        .rating
+          margin: 0 auto
+          float: none
+
+        .rating:not(:checked) > label
+          border-radius: 50%
+          border: 2px solid #000
+          width: 36px
+          height: 36px
+          padding: 1px
+          background: #fff
+          color: #000
+          text-align: center
+          font: 28px Arial, sans-serif
+          font-weight: 600
+          text-shadow: none
+          display: inline-block
+          margin: 0 2%
+
+        .rating:not(:checked) > label:hover
+          background: #c9d85b
+
+        .rating > input:checked + label
+          background: #c9d85b
+          text-shadow: none
+
+      #ul-business-type
+        li
+          padding: 8px 12px
+          background: #fff
+          margin-bottom: 8px
+          border: 1px solid #eaeaea
+          border-radius: 8px
+          display: flex
+          vertical-align: middle
+
+          label
+            margin: 0
+            line-height: 22px
+            top: 0.1rem
+            width: 100%
+
+            .custom-control-description
+              line-height: 1
+              font-size: 14px
+
+            span.custom-control-indicator
+              top: 0.1rem
+              padding: 8.5px
+
+        li:hover
+          border: 1px solid #cacaca
+
+          label
+            .custom-control-indicator
+              background-color: #f30
+              transition: 0.2s ease-in-out
+
+  section.restaurants-page
+    .container
+      div.listings
+        border-radius: 4px
+        transition: opacity 0.2s ease, transform 0.2s ease, -webkit-transform 0.2s ease
+
+        .restaurant-entry
+          background: #fff
+          border-bottom: 1px solid #eaeaea
+          display: block
+          margin: 0
+          position: relative
+          border-radius: 0
+          color: #535353
+          padding: 16px
+          text-decoration: none
+          display: flex
+          flex-direction: row
+
+          .entry-dscr
+            padding-left: 10px
+            flex-basis: 50%
+            position: relative
+
+            .businessType
+              font-weight: 600
+
+          .right-content
+            flex-basis: 25%
+            margin-top: auto
+            padding-left: 16px
+            width: 100%
+            border-left: 1px solid #eaeaea
+
+            .right-review
+              border-left: none
+              display: flex
+              margin-bottom: 4px
+              min-height: 97px
+
+              p
+                margin-top: 0
+                padding: 0
+
+          .entry-dscr::after
+            background: #eaeaea
+            content: ""
+            display: block
+            height: 100%
+            position: absolute
+            right: -1px
+            top: 4px
+            width: 1px
+
+          .fhr
+            border-left: 1px solid #eaeaea
+            flex-basis: 25%
+
+            .img-container
+              margin-top: 15px
+              margin-bottom: auto
+              text-align: center
+              margin-left: 8px
+
+              img
+                max-height: 80px
+
+        .restaurant-entry:first-child
+          border-top-left-radius: 4px
+          border-top-right-radius: 4px
+
+  .pager
+    padding-left: 0
+    margin: 20px 0
+    text-align: center
+    list-style: none
+
+    .disabled a
+      opacity: 0.65
+      cursor: not-allowed
+      background-color: none
+
+    li
+      display: inline
+
+      a
+        display: inline-block
+        padding: 5px 14px
+        background-color: #fff
+        border: 1px solid #ddd
+        border-radius: 15px
+        color: #337ab7
+        text-decoration: none
+
+      a:hover
+        text-decoration: none
+        background-color: #eee
+
+    .previous
+      a
+        float: left
+
+    .next
+      a
+        float: right

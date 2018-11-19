@@ -1,0 +1,25 @@
+{% for restaurant in list_restaurants %}
+<div class="restaurant-entry" data-hygiene-rating="{{ restaurant.RatingValue }}"
+     data-business-type="{{ restaurant.BusinessTypeID }}">
+    <div class="entry-dscr">
+        <h3>{{ restaurant.BusinessName }}</h3>
+        <span class="businessType">{{ restaurant.BusinessType }}</span>
+        <br>
+        <span>{{ restaurant.AddressLine1 }}</span>
+    </div>
+    <!-- end:Entry description -->
+    <div class="right-content bg-white">
+        <div class="right-review">
+            <p> Inspected on: {{ restaurant.RatingDate }}</p>
+        </div>
+    </div>
+    <!-- end:right info -->
+    <div class="fhr">
+        <div class="img-container">
+            <img src="{{ restaurant.img }}">
+        </div>
+    </div>
+    <!--end:row -->
+</div>
+<!-- end:Restaurant entry -->
+{% endfor %}

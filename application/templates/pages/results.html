@@ -1,0 +1,202 @@
+{% extends 'layouts/base.html' %}
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+<div class="page-wrapper results">
+  <div class="result-show">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <p><span class="primary-color"><strong>{{ totalCount }}</strong></span> restaurants found near you</p>
+        </div>
+        <p></p>
+        <div class="col-sm-6">
+          <ul class="sort-by-list unstyled-ul u-clearfix c-sortBy-list u-unstyled">
+            <li class="c-sortBy-item" tabindex="0">
+              <h4 class="c-sortBy-text c-sortBy-button" data-sortby-toggle="">
+                <span class="u-showBelowMid">Best match</span>
+                <span class="u-showAboveMid">Sorted by Best match</span>
+                <span class="c-sortBy-icon">
+                  <svg viewBox="0 0 16 10" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M.44.89a.44.44 0 0 1 0-.89h15.12a.44.44 0 0 1 0 .89H.44zm0 4.44a.44.44 0 0 1 0-.89h9.78a.44.44 0 1 1 0 .9H.44zm0 4.45a.44.44 0 0 1 0-.9H4.9a.44.44 0 1 1 0 .9H.44z" fill-rule="nonzero"></path>
+                  </svg>
+                </span>
+              </h4>
+              <ul class="c-sortBy-popoverList" tabindex="0" data-sortby-dropdown="">
+                <li class="c-sortBy-item">
+                  <label class="o-formControl-label" for="DefaultDisplayRank" tabindex="0">
+                    <input class="o-formControl-input" type="radio" id="DefaultDisplayRank" name="sortbyColumn" data-filter-id="DefaultDisplayRank" data-filter-toggle="so" data-filter-limit-so="" value="DefaultDisplayRank" checked="">
+                    <span class="o-formControl-indicator o-formControl-indicator--radio"></span>
+                    Best match
+                  </label>
+                </li>
+                <li class="c-sortBy-item">
+                  <label class="o-formControl-label" for="Distance" tabindex="0">
+                    <input class="o-formControl-input" type="radio" id="Distance" name="sortbyColumn" data-filter-id="Distance" data-filter-toggle="so" data-filter-limit-so="" value="Distance">
+                    <span class="o-formControl-indicator o-formControl-indicator--radio"></span>
+                    Distance
+                  </label>
+                </li>
+                <li class="c-sortBy-item">
+                  <label class="o-formControl-label" for="AvgRating" tabindex="0">
+                    <input class="o-formControl-input" type="radio" id="AvgRating" name="sortbyColumn" data-filter-id="AvgRating" data-filter-toggle="so" data-filter-limit-so="" value="AvgRating">
+                    <span class="o-formControl-indicator o-formControl-indicator--radio"></span>
+                    Customer rating
+                  </label>
+                </li>
+                <li class="c-sortBy-item">
+                  <label class="o-formControl-label" for="MinimumOrder" tabindex="0">
+                    <input class="o-formControl-input" type="radio" id="MinimumOrder" name="sortbyColumn" data-filter-id="MinimumOrder" data-filter-toggle="so" data-filter-limit-so="" value="MinimumOrder">
+                    <span class="o-formControl-indicator o-formControl-indicator--radio"></span>
+                    Minimum order
+                  </label>
+                </li>
+                <li class="c-sortBy-item">
+                  <label class="o-formControl-label" for="DeliveryFee" tabindex="0">
+                    <input class="o-formControl-input" type="radio" id="DeliveryFee" name="sortbyColumn" data-filter-id="DeliveryFee" data-filter-toggle="so" data-filter-limit-so="" value="DeliveryFee">
+                    <span class="o-formControl-indicator o-formControl-indicator--radio"></span>
+                    Delivery fee
+                  </label>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //results show -->
+  <section class="restaurants-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-3">
+          <div class="sidebar clearfix m-b-20">
+            <div class="main-block">
+              <!--<div class="sidebar-title white-txt">-->
+              <!--<h6>Filter results</h6>-->
+              <!--<i class="fa fa-cutlery pull-right"></i>-->
+              <!--</div>-->
+              <div class="input-group">
+                <input type="text" class="form-control search-field" placeholder="Search your favorite food"> <span class="input-group-btn">
+                  <button class="btn btn-secondary search-btn" type="button"><i class="fa fa-search"></i></button>
+                </span>
+              </div>
+              <div class="widget clearfix">
+                <!-- /widget heading -->
+                <div class="type-filter">
+                  <p class="type-filter-text">
+                    Hygiene Rating
+                  </p>
+                  <button class="btnLink" id="js-reset-rating">
+                    Reset
+                  </button>
+                </div>
+                <div class="widget-body">
+                  <fieldset class="rating">
+                    <input type="radio" id="rating5" name="rating" value="5" /><label for="rating5" title="Very Good">5</label>
+                    <input type="radio" id="rating4" name="rating" value="4" /><label for="rating4" title="Good">4</label>
+                    <input type="radio" id="rating3" name="rating" value="3" /><label for="rating3" title="Generally Satisfactory">3</label>
+                    <input type="radio" id="rating2" name="rating" value="2" /><label for="rating2" title="Improvement Necessary">2</label>
+                    <input type="radio" id="rating1" name="rating" value="1" /><label for="rating1" title="Major Improvement Necessary">1</label>
+                    <input type="radio" id="rating0" name="rating" value="0" /><label for="rating0" title="Urgent Improvement Necessary">0</label>
+                  </fieldset>
+
+                </div>
+              </div>
+              <!-- end:Hygiene widget -->
+              <div class="type-filter">
+                <p class="type-filter-text">
+                  Business Type
+                </p>
+                <button class="btnLink" id="js-reset-type">
+                  Reset
+                </button>
+              </div>
+              <form>
+                <ul id="ul-business-type">
+                  <li>
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" data-business-type="4613"> <span class="custom-control-indicator"></span> <span class="custom-control-description">Pub/Bar/Nightclub</span> </label>
+                  </li>
+                  <li>
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" data-business-type="7844"> <span class="custom-control-indicator"></span> <span class="custom-control-description">Hotels and B&B's</span> </label>
+                  </li>
+                  <li>
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span class="custom-control-description">Mobile Caterers</span> </label>
+                  </li>
+                  <li>
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span class="custom-control-description">Restaurant/Cafe/Canteen</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span class="custom-control-description">Takeaways</span> </label>
+                  </li>
+                </ul>
+              </form>
+              <div class="clearfix"></div>
+            </div>
+            <!-- end:Sidebar nav -->
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-9">
+          <div data-search-results-container>
+            <div class="listings">
+              {% for restaurant in list_restaurants %}
+              <div class="restaurant-entry" data-hygiene-rating="{{ restaurant.RatingValue }}" data-business-type="{{ restaurant.BusinessTypeID }}">
+                <div class="entry-dscr">
+                  <h3>{{ restaurant.BusinessName }}</h3>
+                  <span class="businessType">{{ restaurant.BusinessType }}</span>
+                  <br>
+                  <span>{{ restaurant.AddressLine1 }}</span>
+                </div>
+                <!-- end:Entry description -->
+                <div class="right-content bg-white">
+                  <div class="right-review">
+                    <p> Inspected on: {{ restaurant.RatingDate }}</p>
+                  </div>
+                </div>
+                <!-- end:right info -->
+                <div class="fhr">
+                  <div class="img-container">
+                    <img src="{{ restaurant.img }}">
+                  </div>
+                </div>
+                <!--end:row -->
+              </div>
+              <!-- end:Restaurant entry -->
+              {% endfor %}
+            </div>
+          </div>
+          {% if last_page!=1 %}
+          <ul class="pager">
+            {% if page==1 %}
+            <li class="disabled previous">
+              <a href="#">Previous</a>
+            </li>
+            {% else %}
+            <li class="previous">
+              <a href="{{ url_for('results', page = (page-1)) }}?{{ request.query_string }}">Previous</a>
+            </li>
+            {% endif %}
+            {% if last_page==page %}
+            <li class="disabled next">
+              <a href="#">Next</a>
+            </li>
+            {% else %}
+            <li class="next">
+              <a href="{{ url_for('results', page = (page+1)) }}?{{ request.query_string }}">Next</a>
+            </li>
+            {% endif %}
+          </ul>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
