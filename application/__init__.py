@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 import logging
 from logging import Formatter, FileHandler
@@ -11,7 +12,11 @@ from forms import SearchForm
 app = Flask(__name__)
 
 
-app.config.from_object('config.DevelopmentConfig')
+is_prod = os.environ.get('IS_HEROKU', None)
+if is_prod:
+    app.config.from_object('config.ProductionConfig')
+else:
+    app.config.from_object('config.DevelopmentConfig')
 
 db = SQLAlchemy(app)
 

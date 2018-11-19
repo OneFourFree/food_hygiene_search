@@ -15,11 +15,18 @@ class Config(object):
     # Enable debug mode.
     DEBUG = True
 
-    # Secret key for session management. You can generate random strings here:
-    SECRET_KEY = os.getenv('SECRET_KEY')
+
 
 # Development environment settings
 class DevelopmentConfig(Config):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI')
     DEBUG = False
+    SECRET_KEY = os.getenv('SECRET_KEY')
+
+# Development environment settings
+class ProductionConfig(Config):
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI')
+    DEBUG = False
+    SECRET_KEY = os.environ.get('SECRET_KEY', None)
