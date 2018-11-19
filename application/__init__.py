@@ -8,7 +8,7 @@ from forms import SearchForm
 # App Config.
 #----------------------------------------------------------------------------#
 
-app = Flask('application')
+app = Flask(__name__)
 
 
 app.config.from_object('config.DevelopmentConfig')
