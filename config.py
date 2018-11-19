@@ -27,6 +27,6 @@ class DevelopmentConfig(Config):
 # Development environment settings
 class ProductionConfig(Config):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('CLEARDB_DATABASE_URL', None)
     DEBUG = False
     SECRET_KEY = os.environ.get('SECRET_KEY', None)
