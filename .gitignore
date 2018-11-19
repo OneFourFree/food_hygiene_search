@@ -17,8 +17,7 @@ tests/
 
 *.log
 
-config.py
-
 *.gitkeep
 
 .idea/
+.env
