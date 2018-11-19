@@ -5,6 +5,7 @@ cs50==2.4.4
 enum34==1.1.6
 flake8==3.6.0
 Flask==1.0.2
+Flask-SQLAlchemy==2.3.2
 gunicorn==19.9.0
 itsdangerous==1.1.0
 Jinja2==2.10
