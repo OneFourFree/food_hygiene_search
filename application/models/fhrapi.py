@@ -5,7 +5,6 @@ from application import db
 import pc_lookup
 
 
-
 class RestaurantData():
     # API request headers
     headers = {
@@ -35,10 +34,12 @@ class RestaurantData():
         s = ', '.join(l)
         return s
 
-    def get_establishments(self, pc, page=1, searchtext='', rating=''):
+    def get_establishments(self, pc, page=1, searchtext='', ratingKey=''):
+        # get latitude and longitude from postcode
         geo = pc_lookup.postcode_lookup(pc)
         lat = geo['lat']
         lng = geo['long']
+
         # Set parameters for api call
         parameters = {
             "latitude": lat,
@@ -47,8 +48,8 @@ class RestaurantData():
             "pageSize": "10",
             "sortOptionKey": "Relevance",
             "pageNumber": page,
-            "name": searchtext
-            # "ratingKey": rating
+            "name": searchtext,
+            "ratingKey": ratingKey
         }
 
         # Make a request to FHR api
@@ -56,52 +57,46 @@ class RestaurantData():
                                 params=parameters, headers=self.headers)
         data = response.json()
 
-        # Put Json in list
-        lestablishments = []
+        # Setup multi-dimesional dictionary
+        result = dict()
+        result['establishments'] = []
+        result['meta'] = dict()
+
+        # First grab the meta data
+        result['meta']['totalPages'] = data['meta']['totalPages']
+        result['meta']['totalCount'] = data['meta']['totalCount']
+
+        # iterate over restaurants to add dictionary record to establishments list
         for establishments in data['establishments']:
-            results = dict()
-            RatingDate = strptime(establishments["RatingDate"], '%Y-%m-%dT%H:%M:%S')
+
+            restaurants = dict()
+
+            # format returned data
+            RatingDate = strptime(
+                establishments["RatingDate"], '%Y-%m-%dT%H:%M:%S')
             ddmmyy = strftime('%d/%m/%Y', RatingDate)
-            # results['BusinessName'] = establishments["BusinessName"]
-            results['BusinessName'] = re.sub("[^ 'a-zA-Z0-9]", "", establishments["BusinessName"])
-            results['BusinessType'] = BusinessType().get_business_type(
+
+            # Create dictionary record
+            restaurants['BusinessName'] = re.sub(
+                "[^ 'a-zA-Z0-9]", "", establishments["BusinessName"])
+            restaurants['BusinessType'] = BusinessType().get_business_type(
                 establishments["BusinessTypeID"])
-            results['AddressLine1'] = self.format_address(al1=establishments["AddressLine1"],
-                                                          al2=establishments["AddressLine2"],
-                                                          al3=establishments["AddressLine3"],
-                                                          al4=establishments["AddressLine4"],
-                                                          pc=establishments["PostCode"])
-            results['RatingValue'] = establishments["RatingValue"]
-            results['RatingDate'] = ddmmyy
-            results['BusinessTypeID'] = establishments["BusinessTypeID"]
-            results['img'] = self.rating_image(establishments["RatingValue"])
-            lestablishments.append(results)
-        return lestablishments
+            restaurants['AddressLine1'] = self.format_address(al1=establishments["AddressLine1"],
+                                                              al2=establishments["AddressLine2"],
+                                                              al3=establishments["AddressLine3"],
+                                                              al4=establishments["AddressLine4"],
+                                                              pc=establishments["PostCode"])
+            restaurants['RatingValue'] = establishments["RatingValue"]
+            restaurants['RatingDate'] = ddmmyy
+            restaurants['BusinessTypeID'] = establishments["BusinessTypeID"]
+            restaurants['img'] = self.rating_image(
+                establishments["RatingValue"])
 
-    def get_establishments_meta(self):
-        # Set parameters for api call
-        parameters = {
-            "latitude": "51.65980",
-            "longitude": "0.03610",
-            "maxDistanceLimit": "10",
-            "pageSize": "10",
-            "sortOptionKey": "rating",
-            "pageNumber": "1",
-            "ratingKey": "5"
-        }
+            # append dictionary to list
+            result['establishments'].append(restaurants)
+        return result
 
-        # Make a request to FHR api
-        response = requests.get('http://api.ratings.food.gov.uk/Establishments',
-                                params=parameters, headers=self.headers)
-        data = response.json()
-
-        meta = dict()
-
-        meta['totalPages'] = data['meta']['totalPages']
-        meta['totalCount'] = data['meta']['totalCount']
-
-        return meta
-
+    # set img location based on hygiene rating
     def rating_image(self, rating):
         r = rating
         if r == '1':
@@ -118,6 +113,8 @@ class RestaurantData():
             return '/static/img/fhrs_0_en-gb.jpg'
         else:
             return '/static/img/fhrs_1_en-gb.jpg'
+
+# lookup business type friendly name
 
 
 class BusinessType(db.Model):

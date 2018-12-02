@@ -1,25 +1,50 @@
-{% for restaurant in list_restaurants %}
-<div class="restaurant-entry" data-hygiene-rating="{{ restaurant.RatingValue }}"
-     data-business-type="{{ restaurant.BusinessTypeID }}">
-    <div class="entry-dscr">
-        <h3>{{ restaurant.BusinessName }}</h3>
-        <span class="businessType">{{ restaurant.BusinessType }}</span>
-        <br>
-        <span>{{ restaurant.AddressLine1 }}</span>
-    </div>
-    <!-- end:Entry description -->
-    <div class="right-content bg-white">
-        <div class="right-review">
-            <p> Inspected on: {{ restaurant.RatingDate }}</p>
+<div data-search-results-container data-total-restaurants="{{totalCount}}" class="results-list">
+    <div class="listings">
+        {% for restaurant in list_restaurants %}
+        <div class="restaurant-entry" data-hygiene-rating="{{ restaurant.RatingValue }}" data-business-type="{{ restaurant.BusinessTypeID }}">
+            <div class="entry-dscr">
+                <h3>{{ restaurant.BusinessName }}</h3>
+                <span class="businessType">{{ restaurant.BusinessType }}</span>
+                <br>
+                <span>{{ restaurant.AddressLine1 }}</span>
+            </div>
+            <!-- end:Entry description -->
+            <div class="right-content bg-white">
+                <div class="right-review">
+                    <p> Inspected on: {{ restaurant.RatingDate }}</p>
+                </div>
+            </div>
+            <!-- end:right info -->
+            <div class="fhr">
+                <div class="img-container">
+                    <img src="{{ restaurant.img }}">
+                </div>
+            </div>
+            <!--end:row -->
         </div>
+        <!-- end:Restaurant entry -->
+        {% endfor %}
     </div>
-    <!-- end:right info -->
-    <div class="fhr">
-        <div class="img-container">
-            <img src="{{ restaurant.img }}">
-        </div>
-    </div>
-    <!--end:row -->
+    {% if last_page!=1 %}
+    <ul class="pager">
+        {% if page==1 %}
+        <li class="disabled previous">
+            <a href="#">Previous</a>
+        </li>
+        {% else %}
+        <li class="previous">
+            <a href="{{ url_for('results', page = (page-1)) }}?{{ request.query_string }}">Previous</a>
+        </li>
+        {% endif %}
+        {% if last_page==page %}
+        <li class="disabled next">
+            <a href="#">Next</a>
+        </li>
+        {% else %}
+        <li class="next">
+            <a href="{{ url_for('results', page = (page+1)) }}?{{ request.query_string }}">Next</a>
+        </li>
+        {% endif %}
+    </ul>
+    {% endif %}
 </div>
-<!-- end:Restaurant entry -->
-{% endfor %}
