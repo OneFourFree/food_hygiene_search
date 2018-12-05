@@ -3,10 +3,10 @@ This site makes it really simple to find up to date food hygiene ratings for res
 
 A recent article from the BBC outlines just how many unhygienic restaurants may be operating on food delivery platforms. https://www.bbc.co.uk/news/uk-45888709
 
-# Installation
+## Installation
 1) Download/clone this repository:
 
-		$ git clone
+		$ git clone https://github.com/deanrobinson/food_hygiene_search.git
 		$ cd food_hygiene_search
 
 2) Create a virtualenv and activate it:
@@ -14,13 +14,13 @@ A recent article from the BBC outlines just how many unhygienic restaurants may 
 		$ virtualenv env
 		$ source env/bin/activate
 
-3) Install the required dependencies
+3) Install the required dependencies:
 
 		$ pip install -r requirements.txt
 
 4) Import the MySQLDB
 5) Rename .env.example and add your configuration details
-6) Run app
+6) Run app:
 
 		$ python run.py
 
